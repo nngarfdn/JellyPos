@@ -12,7 +12,7 @@ on:
 
 jobs:
   lint:
-    name: Run ktlint
+    name: Run ktlint with Reviewdog
     runs-on: ubuntu-latest
 
     steps:
@@ -24,12 +24,22 @@ jobs:
     - name: Set up JDK 11
       uses: actions/setup-java@v2
       with:
-        distribution: 'temurin' # Specify the JDK distribution, e.g., adopt, zulu, temurin
+        distribution: 'temurin' # Specify the JDK distribution
         java-version: '11'
 
-    # Install dependencies for Android and JVM
+    # Install dependencies
     - name: Install dependencies
       run: ./gradlew --no-daemon clean ktlintCheck
+
+    # Run ktlint and pipe the output to reviewdog
+    - name: Run ktlint with Reviewdog
+      uses: reviewdog/action-ktlint@v1
+      with:
+        reporter: github-pr-check # Creates a GitHub check
+        tool_name: ktlint
+        github_token: ${{ secrets.GITHUB_TOKEN }}
+        level: warning
+        fail_on_error: true
 
     # Optional: Add a step to cache Gradle dependencies
     - name: Cache Gradle packages
@@ -41,7 +51,3 @@ jobs:
         key: ${{ runner.os }}-gradle-${{ hashFiles('**/*.gradle*', '**/gradle-wrapper.properties') }}
         restore-keys: |
           ${{ runner.os }}-gradle-
-
-    # Run ktlint to check the code
-    - name: Run ktlint
-      run: ./gradlew ktlintCheck
