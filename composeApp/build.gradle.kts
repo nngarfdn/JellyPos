@@ -48,6 +48,8 @@ kotlin {
             implementation(compose.components.uiToolingPreview)
             implementation(libs.androidx.lifecycle.viewmodel)
             implementation(libs.androidx.lifecycle.runtime.compose)
+            implementation (libs.compose.charts)
+
         }
     }
 }
@@ -89,5 +91,6 @@ android {
 }
 dependencies {
     implementation(libs.androidx.material3.android)
+    implementation(libs.androidx.ui.tooling.preview.desktop)
 }
 
