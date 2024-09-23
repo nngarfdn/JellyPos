@@ -12,14 +12,11 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
-import androidx.compose.ui.unit.sp
 import com.bythentest.cloudvideoapp.ui.theme.JellyTypography
 import org.jellymobile.jellypos.Res
 import org.jellymobile.jellypos.ic_profile
 import org.jellymobile.jellypos.jellydesign.themes.BluePrimary
 import org.jellymobile.jellypos.jellydesign.themes.FontColor
-import org.jellymobile.jellypos.jellydesign.themes.MontserratRegular
-import org.jellymobile.jellypos.jellydesign.themes.MontserratSemiBold
 import org.jetbrains.compose.resources.painterResource
 
 @Composable
@@ -43,7 +40,6 @@ fun HomeHeaderComponent(
 
         Spacer(modifier = Modifier.weight(1f))
 
-        // Profile picture
         Image(
             painter = painterResource(Res.drawable.ic_profile),
             contentDescription = "Profile Picture",

@@ -92,5 +92,6 @@ android {
 dependencies {
     implementation(libs.androidx.material3.android)
     implementation(libs.androidx.ui.tooling.preview.desktop)
+    implementation(libs.material3.android)
 }
 

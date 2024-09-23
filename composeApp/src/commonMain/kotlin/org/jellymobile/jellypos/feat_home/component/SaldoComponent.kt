@@ -1,6 +1,5 @@
 package org.jellymobile.jellypos.feat_home.component
 
-import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
@@ -25,8 +24,6 @@ import org.jellymobile.jellypos.ic_report
 import org.jellymobile.jellypos.jellydesign.component.JellyButton
 import org.jellymobile.jellypos.jellydesign.themes.FontColor
 import org.jellymobile.jellypos.jellydesign.themes.LightGray
-import org.jellymobile.jellypos.jellydesign.themes.MontserratBold
-import org.jellymobile.jellypos.jellydesign.themes.MontserratSemiBold
 
 @Composable
 fun BalanceCard(balanceAmount: String) {
