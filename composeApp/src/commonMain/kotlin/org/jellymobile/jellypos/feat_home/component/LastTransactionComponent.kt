@@ -23,9 +23,7 @@ import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import org.jellymobile.jellypos.Res
-import org.jellymobile.jellypos.ic_cash
-import org.jellymobile.jellypos.ic_qris
+import org.jellymobile.jellypos.feat_home.model.Transaction
 import org.jellymobile.jellypos.jellydesign.themes.FontColor
 import org.jellymobile.jellypos.jellydesign.themes.MontserratMedium
 import org.jellymobile.jellypos.jellydesign.themes.MontserratRegular
@@ -35,17 +33,23 @@ import org.jetbrains.compose.resources.DrawableResource
 import org.jetbrains.compose.resources.painterResource
 
 @Composable
-fun LastTransactionComponent(modifier: Modifier = Modifier.padding(16.dp)) {
+fun LastTransactionComponent(
+    modifier: Modifier = Modifier.padding(16.dp),
+    transactions: List<Transaction> // Pass the list of transactions dynamically
+) {
     Column(modifier = modifier) {
-        Text(text = "Transaksi Terakhir",
+        Text(
+            text = "Transaksi Terakhir",
             fontFamily = MontserratSemiBold(),
             fontSize = 16.sp,
             fontWeight = FontWeight.Bold
         )
-        Text(text = "Transaksi penjualan produk terakhir.",
+        Text(
+            text = "Transaksi penjualan produk terakhir.",
             fontFamily = MontserratMedium(),
             fontSize = 14.sp,
-            fontWeight = FontWeight.Normal)
+            fontWeight = FontWeight.Normal
+        )
 
         Card(
             modifier = Modifier
@@ -57,38 +61,17 @@ fun LastTransactionComponent(modifier: Modifier = Modifier.padding(16.dp)) {
             Column(
                 modifier = Modifier.padding(8.dp)
             ) {
-                TransactionCard(
-                    transactionLabel = "QRIS",
-                    transactionId = "sa43j12",
-                    amount = "Rp121.000",
-                    date = "12 Sept 2024",
-                    drawableResource = Res.drawable.ic_qris // Replace with your actual drawable resource
-                )
-                TransactionCard(
-                    transactionLabel = "CASH",
-                    transactionId = "sa98l12",
-                    amount = "Rp80.000",
-                    date = "10 Sept 2024",
-                    drawableResource = Res.drawable.ic_cash // Replace with your actual drawable resource
-                )
-                TransactionCard(
-                    transactionLabel = "QRIS",
-                    transactionId = "sa43j12",
-                    amount = "Rp121.000",
-                    date = "12 Sept 2024",
-                    drawableResource = Res.drawable.ic_qris // Replace with your actual drawable resource
-                )
-                TransactionCard(
-                    transactionLabel = "CASH",
-                    transactionId = "sa98l12",
-                    amount = "Rp80.000",
-                    date = "10 Sept 2024",
-                    drawableResource = Res.drawable.ic_cash // Replace with your actual drawable resource
-                )
+                for (item in transactions){
+                    TransactionCard(
+                        transactionLabel = item.transactionLabel,
+                        transactionId = item.transactionId,
+                        amount = item.amount,
+                        date = item.date,
+                        drawableResource = item.drawableResource
+                    )
+                }
             }
         }
-
-
     }
 }
 
